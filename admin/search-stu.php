@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title>جستجو زبان آموز</title>
+<style type=text/css>
+body 
+{
+	font-family:B Homa!important;
+	}
+#form
+{
+	direction:rtl;
+	color:rgba(132,131,131,1.00);
+	font-size:14px;
+	margin-top:20px;
+	border:solid rgba(163,162,162,1.00) 1px;;
+	border-radius:10px;
+	padding-top:10px;
+}
+</style>
+</head>
+<body>
+<br>
+<br>
+<div class=container>
+<div id=form align=center>
+<?php
+include "../funcs/connect.php";
+if(isset($_GET["btnsearch1"]))
+{
+	  $id=$_GET["id"];
+$sql="select * from students where id=? ";
+$result=$connect->prepare($sql);
+$result->bindValue(1,$id);
+$query=$result->execute();
+
+if($query)
+{
+	foreach($result as $rows)
+	{
+	echo '<form  class="form-group form-inline" action="delrecord.php?id=$id">';
+echo "<label>کد </label><input type=text name=id id=id class=form-control value=".$rows["id"].">
+<label>نام </label><input type=text name=name id=name class=form-control  value=".$rows["name"].">
+<label>نام خانوادگی</label><input type=text name=family id=family class=form-control value=".$rows["family"]."><br><br>
+<label>سن </label><input type=text name=age id=age class=form-control value=".$rows["age"].">
+<label>آدرس</label><input type=text name=address id=address class=form-control value=".$rows["address"].">
+<label>شماره تماس</label><input type=text name=tell id=tell class=form-control value=".$rows["tell"]."><br><br>
+<label>رمز عبور </label><input type=text name=pass id=pass class=form-control value=".$rows["password"].">
+<label>نام کاربری</label><input type=text name=username id=username class=form-control value=".$rows["username"]."><br><br>
+<input type=submit name=btn value=حذف class='btn-danger form-control'>
+</form><hr>";
+	}
+}
+else
+{
+	echo "زبان آموز با این کد ثبت نشده است ";
+}
+}
+?>
+<?php
+if(isset($_GET["btnsearch2"]))
+{
+	  $family=$_GET["family"];
+$sql="select * from students where family=? ";
+$result=$connect->prepare($sql);
+$result->bindValue(1,$family);
+$query=$result->execute();
+
+if($query)
+{
+	foreach($result as $rows)
+	{
+	echo "<form  class='form-group form-inline' action='delrecord.php?id=".$rows["id"]."'>";
+echo "<label>کد </label><input type=text name=id id=id class=form-control value=".$rows["id"].">
+<label>نام </label><input type=text name=name id=name class=form-control  value=".$rows["name"].">
+<label>نام خانوادگی</label><input type=text name=family id=family class=form-control value=".$rows["family"]."><br><br>
+<label>سن </label><input type=text name=age id=age class=form-control value=".$rows["age"].">
+<label>آدرس</label><input type=text name=address id=address class=form-control value=".$rows["address"].">
+<label>شماره تماس</label><input type=text name=tell id=tell class=form-control value=".$rows["tell"]."><br><br>
+<label>رمز عبور </label><input type=text name=pass id=pass class=form-control value=".$rows["password"].">
+<label>نام کاربری</label><input type=text name=username id=username class=form-control value=".$rows["username"]."><br><br>
+<input type=submit name=btn value=حذف class='btn-danger form-control'>
+</form><hr>";
+	}
+}
+else
+{
+	echo "زبان آموز با این کد ثبت نشده است ";
+}
+}
+?>
+
+<form  class="form-group form-inline" action="#">
+<label>جستجو براساس شماره</label><input type=text name="id" id="id" class=form-control placeholder="کد زبان آموز را وارد کنید">
+<input type=submit value=جستجو class="btn-danger form-control" name="btnsearch1" id="btnsearch">
+</form>
+<br>
+<form  class="form-group form-inline" action="#">
+<label>جستجو براساس نام خانوادگی</label><input type=text name="family" id="family" class=form-control placeholder="نام خانوادگی زبان اموز را واردکنید">
+<input type=submit value=جستجو class="btn-danger form-control" name="btnsearch2" id="btnsearch">
+</form>
+</div>
+</div>
+</body>
+<link rel=stylesheet href=../bootstrap/css/bootstrap.min.css>
+<link rel=stylesheet href=../bootstrap/css/bootstrap-theme.min.css>
+<script src=../bootstrap/js/bootstrap.min.js></script>
+</html>

@@ -1,0 +1,43 @@
+<?php
+include "funcs/connect.php";
+if(isset($_GET["btn"]))
+{
+$flname=$_GET["flname"];	
+$age=$_GET["age"];	
+$sex=$_GET["sex"];	
+$course=$_GET["course"];	
+$termnum=$_GET["term-num"];	
+$tadris=$_GET["tadris"];	
+$raftar=$_GET["raftar"];	
+$exam=$_GET["exam"];
+$comment=$_GET["comment"];	
+$sql="INSERT INTO `comment` (`id`, `flname`, `age`, `sex`, `course`, `numterm`, `tadris`, `raftar`, `exam`, `shekayat`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$result=$connect->prepare($sql);
+$result->bindValue(1,$flname);
+$result->bindValue(2,$age);
+$result->bindValue(3,$sex);
+$result->bindValue(4,$course);
+$result->bindValue(5,$termnum);
+$result->bindValue(6,$tadris);
+$result->bindValue(7,$raftar);
+$result->bindValue(8,$exam);
+$result->bindValue(9,$comment);
+$query=$result->execute();
+if($query)
+{
+	header("location:nazarsanji.php?add=1010");
+	exit;
+}
+else
+{
+	header("location:nazarsanji.php?error=1010");
+	exit;
+}
+}
+else
+{
+	header("location:nazarsanji.php");
+	exit;
+}
+
+?>

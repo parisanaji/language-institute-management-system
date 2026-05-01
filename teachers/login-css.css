@@ -1,0 +1,57 @@
+/* CSS Document */
+
+/* CSS Document */
+<style type="text/css" >
+body
+{
+	background-image:url(../pic/1573.jpg);
+	background-size:cover;
+	align-content:center;
+	
+}
+#kadr
+{
+	font-family:"B Homa";
+	font-size:18px;
+	width:300px;
+	background-color:rgba(255,255,255,1.00);
+	border:solid rgba(7,5,1,0.90);
+	border-radius:10px;
+	align-content:center;
+	color:rgba(105,105,105,1.00);
+	align:center !important;
+		
+}
+#btn
+{
+	font-family:"B Homa";
+	color:white;
+	border-radius:10px;
+	size:100px;
+	background-color:rgba(87,85,82,0.90));
+
+}
+#kadr2
+{
+	background-color:rgba(87,85,82,0.90);
+	color:white;
+	border-radius:5px;
+}
+#empty
+{
+	color:red;	
+}
+#img
+{
+
+	
+	border-radius:15px;
+}
+#img:hover
+{
+	
+	transition:2s all ease;
+	opacity:.5;
+}
+</style>
+
